@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MyTestAutomation.Pages;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -10,21 +11,16 @@ namespace MyTestAutomation.Tests.parentTest
     class ParentTest
     {
         IWebDriver driver;
+        protected LoginPage loginPage;
 
         [SetUp]
         public void Initialize()
         {
             driver = new ChromeDriver();
-
-        }
-
-        [Test]
-        public void LaunchApp()
-        {
             driver.Manage().Window.Maximize();
-
             driver.Navigate().GoToUrl("https://www.google.com.ua/");
 
+            loginPage = new LoginPage(driver);
         }
 
         [TearDown]
